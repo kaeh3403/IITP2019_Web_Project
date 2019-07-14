@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+아이디 : <input type="text" name="id" />
+비밀번호 : <input type="text" name="pw" />
+이름 : <input type="text" name="name" />
+성별 : <input type="text" name="gender" />
+핸드폰 : <input type="text" name="cphone" />
+생일 : <input type="text" name="birthday" />
+이메일 : <input type="text" name="email" />
+</body>
+</html>

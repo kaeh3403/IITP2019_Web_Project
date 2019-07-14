@@ -1,0 +1,47 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class MemberDAO {
+
+	Connection connection = null;
+	PreparedStatement preparedStatement = null;
+	int resultSet = 0;
+	
+	public int MemberDAO(MemberDTO dto) throws Exception {
+		String url = "jdbc:mysql://localhost:3306/soccer_matching";
+		String id = "root";
+		String pw = "54321";
+		
+		String sql = "insert into member values(id, pwd, name, gender, cphone, birthday, email) values(?, ?, ?, ?, ?, ?, ?)";
+		int result = 0;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection(url, id, pw);
+			System.out.println("연결성공");
+			
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, dto.id);
+			preparedStatement.setString(2, dto.pwd);
+			preparedStatement.setString(3, dto.name);
+			preparedStatement.setInt(4, dto.gender);
+			preparedStatement.setString(5, dto.cphone);
+			preparedStatement.setString(6, dto.birthday);
+			preparedStatement.setString(7, dto.email);
+			
+			System.out.println(preparedStatement);
+			resultSet = preparedStatement.executeUpdate();
+		
+			
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("실패");
+		}
+		return result;
+		
+	}
+}
