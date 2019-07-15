@@ -23,6 +23,8 @@ public class MemberServlet extends HttpServlet {
 	
     public void init() {
     	memberdao = new MemberDAO();
+    	
+    	
     }
 	
     public MemberServlet() {
@@ -41,6 +43,9 @@ public class MemberServlet extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		String name = request.getParameter("name");
 		int gender = request.getIntHeader("gender");
+			if(gender != 0) {
+				gender = 1;
+			}
 		String cphone = request.getParameter("cphone");
 		String birthday = request.getParameter("birthday");
 		String email = request.getParameter("email");
@@ -49,7 +54,6 @@ public class MemberServlet extends HttpServlet {
 		
 		try {
 			dao.memberInsert(dto);
-			
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
